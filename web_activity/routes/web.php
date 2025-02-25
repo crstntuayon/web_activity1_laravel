@@ -11,7 +11,7 @@ Route::get('/', function () {
 
 
 // Protected Routes (Authenticated Users Only)
-Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () {
 
     // Students Routes
     Route::get('/students', [StudentController::class, 'index'])->name('students.index');  // Protected
@@ -22,11 +22,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/students/{id}', [StudentController::class, 'update'])->name('students.update');  // Protected
 
     // Student Delete Routes
-    //Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');  // Protected
+    Route::delete('/students/{id}', [StudentController::class, 'destroy'])->name('students.destroy');  // Protected
 
     // Add new student (protected)
     Route::post('/add-new', [StudentController::class, 'addNewStudent'])->name('std.addNewStudent');  // Protected
-});
+//});
 
 // Public Students View Route (If needed to be public)
 Route::get('/', [StudentController::class, 'myView'])->name('std.myView'); // Public if required
