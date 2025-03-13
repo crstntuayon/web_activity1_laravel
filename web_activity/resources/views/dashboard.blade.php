@@ -19,7 +19,7 @@
             <div class="col-12 d-flex justify-content-end mt-3">
                <!-- <form action="/logout" method="POST">-->
                     @csrf
-                    <!-- Check if the user is authenticated -
+                    <!-- Check if the user is authenticated 
                     @auth
                     <i class="fas fa-user"></i>&nbsp;{{ auth()->user()->username }}&nbsp;&nbsp;
                     @endauth
@@ -35,12 +35,16 @@
             <div class="input-group">
                 <input type="text" class="form-control me-3" style="max-width: 300px;" placeholder="Search Student's name" name="search">
                 <button class="btn btn-primary" type="submit">Search</button>
+                
+                <form action="{{ route('students.index') }}" method="GET" class="mb-3"> 
+            <button class="btn btn-secondary" type="submit">Clear Search</button>
+        </form>
             </div>
         </form>
         
-        <form action="{{ route('students.index') }}" method="GET" class="mb-3">
+       <!-- <form action="{{ route('students.index') }}" method="GET" class="mb-3">
             <button class="btn btn-secondary" type="submit">Clear Search</button>
-        </form>
+        </form> -->
         
             <div>
                 <table class="table table-hover">
@@ -50,7 +54,7 @@
                             <th scope="col">Student's Name</th>
                             <th scope="col">Age</th>
                             <th scope="col">Gender</th>
-                           <!-- <th scope="col">Action</th>-->
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -62,17 +66,17 @@
                             <td>{{ $std->age }}</td>
                             <td>{{ $std->gender }}</td>
                             <td>
-                                <!-- Edit Button --
+                                <!-- Edit Button -->
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#editModal{{ $std->id }}">
                                     Edit
                                 </button>
                     
-                                <!-- Delete Button --
+                                <!-- Delete Button -->
                                 <form action="{{ route('students.destroy', $std->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button> 
-                                </form> -->
+                                </form> 
                             </td>
                         </tr>
                         @endforeach
@@ -117,6 +121,7 @@
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addNewModal">
                     Add New Students
                 </button>
+
                     <!-- Modal component -->
                 <div class="modal fade" id="addNewModal" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog">

@@ -20,7 +20,7 @@
             <div class="col-12 d-flex justify-content-end mt-3">
                 <form action="/logout" method="POST">
                     @csrf
-                    <!-- Check if the user is authenticated -->
+                    <!-- Check if the user is authenticated 
                     @auth
                     <i class="fas fa-user"></i>&nbsp;{{ auth()->user()->username }}&nbsp;&nbsp;
                    @endauth
